@@ -7,7 +7,7 @@ class MongoSessionManager extends SessionManager {
 	/**
 	 * Create an instance of the database session driver.
 	 *
-	 * @return Illuminate\Session\DatabaseStore
+	 * @return MongoSession\MongoStore
 	 */
 	protected function createMongoDriver()
 	{
@@ -21,7 +21,7 @@ class MongoSessionManager extends SessionManager {
 	/**
 	 * Get the database connection for the database driver.
 	 *
-	 * @return Illuminate\Database\Connection
+	 * @return LMongo\Database
 	 */
 	protected function getMongoConnection()
 	{
