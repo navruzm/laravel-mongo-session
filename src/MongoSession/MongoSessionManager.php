@@ -21,7 +21,7 @@ class MongoSessionManager extends SessionManager {
 	/**
 	 * Get the database connection for the database driver.
 	 *
-	 * @return LMongo\Database
+	 * @return LMongo\Connection
 	 */
 	protected function getMongoConnection()
 	{

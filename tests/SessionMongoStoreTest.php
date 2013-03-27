@@ -67,7 +67,7 @@ class SessionMongoStoreTest extends PHPUnit_Framework_TestCase {
 
 	protected function getStore()
 	{
-		return new MongoStore(m::mock('LMongo\DatabaseManager'), m::mock('Illuminate\Encryption\Encrypter'), 'collection');
+		return new MongoStore(m::mock('LMongo\Connection'), m::mock('Illuminate\Encryption\Encrypter'), 'collection');
 	}
 
 }
