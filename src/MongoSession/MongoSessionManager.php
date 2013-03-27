@@ -27,7 +27,7 @@ class MongoSessionManager extends SessionManager {
 	{
 		$connection = $this->app['config']['session.connection'];
 
-		return $this->app['mongo']->connection($connection);
+		return $this->app['lmongo']->connection($connection);
 	}
 
 }

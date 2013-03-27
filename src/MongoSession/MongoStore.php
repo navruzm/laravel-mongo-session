@@ -1,6 +1,6 @@
 <?php namespace MongoSession;
 
-use LMongo\Database;
+use LMongo\DatabaseManager;
 use Illuminate\Encryption\Encrypter;
 use Illuminate\Session\Store;
 use Illuminate\Session\Sweeper;
@@ -11,7 +11,7 @@ class MongoStore extends Store implements Sweeper {
 	/**
 	 * The database connection instance.
 	 *
-	 * @var \LMongo\Database
+	 * @var \LMongo\DatabaseManager
 	 */
 	protected $connection;
 
@@ -32,12 +32,12 @@ class MongoStore extends Store implements Sweeper {
 	/**
 	 * Create a new database session store.
 	 *
-	 * @param  LMongo\Database  $connection
+	 * @param  LMongo\DatabaseManager  $connection
 	 * @param  Illuminate\Encrypter  $encrypter
 	 * @param  string  $collection
 	 * @return void
 	 */
-	public function __construct(Database $connection, Encrypter $encrypter, $collection)
+	public function __construct(DatabaseManager $connection, Encrypter $encrypter, $collection)
 	{
 		$this->collection = $collection;
 		$this->encrypter = $encrypter;
@@ -92,7 +92,7 @@ class MongoStore extends Store implements Sweeper {
 		$last_activity = new \MongoDate($session['last_activity']);
 
 		$update_data = array('payload' => $payload, 'last_activity' => $last_activity);
-		
+
 		$this->collection()->update(array('id' => $id), array('$set' => $update_data));
 	}
 
@@ -120,7 +120,7 @@ class MongoStore extends Store implements Sweeper {
 	/**
 	 * Get the database connection instance.
 	 *
-	 * @return \LMongo\Database
+	 * @return \LMongo\DatabaseManager
 	 */
 	public function getConnection()
 	{
